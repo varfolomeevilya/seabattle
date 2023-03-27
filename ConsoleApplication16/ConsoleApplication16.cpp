@@ -3,9 +3,77 @@
 
 #include <iostream>
 using namespace std;
+const int N = 10;
+int my_map[N][N] = { 0 };
+int comp_map[N][N]= { 0 };
+int x, y;
+void setup() 
+{
+	srand(time(0));
+	for (int i = 0; i < 4; i++) 
+	{
+		x = rand() % N;
+		y = rand() % N;
+		comp_map[x][y] = 2;
+	}
+
+}
+void draw() 
+{
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			if (my_map[i][j]==1); 
+			{
+				cout << " - ";
+			}
+			else 
+			{
+              cout<<my_map[i][j]
+			}
+			
+			
+		}
+		
+	}
+}
 int main()
 {
-	setlocale(LC_ALL, "");
+	setlocale(LC_ALL, "Rus");
+	const int N = 10;
+	int map[N][N] = { 0 };
+	int x, y;
+	int menu;
+	for (int i = 0; i < 5; i++) 
+	{
+		x = rand() % N;
+		y = rand() % N;
+		map[x][y] = 1;
+	}
+	for (int i = 0; i < N; i++) 
+	{
+		for (int j = 0; j < N; j++) 
+		{
+			cout << map[i][j];
+		}
+		cout << endl;
+	}
+	while (true) 
+	{
+		cout << "Введите координаты цели" << endl;
+		cin >> x;
+		cin >> y;
+		if (map[x][y]) 
+		{
+			cout << "Попал" << endl;
+			map[x][y] = 0;
+		}
+		else 
+		{
+			cout << "Промах" << endl;
+		}
+	}
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
