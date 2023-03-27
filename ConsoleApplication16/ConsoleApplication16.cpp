@@ -3,6 +3,7 @@
 
 #include <iostream>
 using namespace std;
+
 const int N = 10;
 int my_map[N][N] = { 0 };
 int comp_map[N][N]= { 0 };
@@ -24,33 +25,124 @@ void draw()
 	{
 		for (int j = 0; j < N; j++)
 		{
-			if (my_map[i][j]==1); 
+			if (my_map[i][j]==0)
 			{
-				cout << " - ";
+				cout << "-";
+			}
+			else
+			{
+				cout << my_map[i][j];
+			}
+				
+		}
+		cout << endl;
+		
+	}
+	cout << endl;
+
+	for (int i = 0; i < N; i++) 
+	{
+		for (int j = 0; j < N; j++) 
+		{
+			if (comp_map[i][j]==0) 
+			{
+				cout << "-";
 			}
 			else 
 			{
-              cout<<my_map[i][j]
+				cout << comp_map[i][j];
 			}
-			
+		}
+		cout << endl;
+	}
+}
+void logic() 
+{
+	while (true) 
+	{
+		cout << "Введите координаты вражеского корабля  по оси X" << endl;
+		cin >> x;
+		cout << "Введите координаты вражеского корабля по оси Y" << endl;
+		cin >> y;
+		if (comp_map[x][y] == 9) 
+		{
+			cout << "Попал" << endl;
+			comp_map[x][y] = 0;
+			bool detect = false;
+			for (int i = 0; i < N; i++) 
+			{
+				for (int j = 0; j < N; j++) 
+				{
+					if (comp_map[x][y] = 8) 
+					{
+						detect = true;
+				    }
+			    }
+			}
+			if (detect == false) 
+			{
+				cout << "Вы победили!!!" << endl;
+			}
+			cout << detect;
+		}
+		else 
+		{
+			cout << "Промах." << endl;
 			
 		}
+    }
+}
+void input()
+{
+	cout << "Введите координаты вражеского корабля  по оси X" << endl;
+	cin >> x;
+	cout << "Введите координаты вражеского корабля по оси Y" << endl;
+	cin >> y; 
+	if (comp_map[x][y] == 9)
+	{
+		cout << "Попал" << endl;
+		comp_map[x][y] = 0;
+		bool detect = false;
+		for (int i = 0; i < N; i++)
+		{
+			for (int j = 0; j < N; j++)
+			{
+				if (comp_map[x][y] = 8)
+				{
+					detect = true;
+				}
+			}
+		}
+		if (detect == false)
+		{
+			cout << "Вы победили!!!" << endl;
+		}
+		cout << detect;
+	}
+	else
+	{
+		cout << "Промах." << endl;
 		
 	}
 }
+
 int main()
 {
 	setlocale(LC_ALL, "Rus");
+	setup();
+	draw();
+	logic();
 	const int N = 10;
-	int map[N][N] = { 0 };
+	int map[N][N] = {0};
 	int x, y;
-	int menu;
+	int menu = 0;
 	for (int i = 0; i < 5; i++) 
 	{
 		x = rand() % N;
 		y = rand() % N;
-		map[x][y] = 1;
+		map[x][y] = 2;
 	}
+	
 	for (int i = 0; i < N; i++) 
 	{
 		for (int j = 0; j < N; j++) 
@@ -64,17 +156,21 @@ int main()
 		cout << "Введите координаты цели" << endl;
 		cin >> x;
 		cin >> y;
-		if (map[x][y]) 
+		if (map[x][y]=0) 
 		{
 			cout << "Попал" << endl;
-			map[x][y] = 0;
+			map[x][y];
 		}
 		else 
 		{
 			cout << "Промах" << endl;
 		}
 	}
+	cout << endl;
+	return 0;
+
 }
+
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
 // Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
